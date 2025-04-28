@@ -1,6 +1,7 @@
 {
   "name": "monorepo",
   "version": "0.0.1",
+  "packageManager": "yarn@1.22.22",
   "devDependencies": {
     "turbo": "2.5.2"
   }
