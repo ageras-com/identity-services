@@ -32,7 +32,7 @@ turbo-windows-arm64@2.5.2:
   resolved "https://registry.yarnpkg.com/turbo-windows-arm64/-/turbo-windows-arm64-2.5.2.tgz#8bf9e79d2f3adf92371ef79da89c04090f3ab914"
   integrity sha512-fMU41ABhSLa18H8V3Z7BMCGynQ8x+wj9WyBMvWm1jeyRKgkvUYJsO2vkIsy8m0vrwnIeVXKOIn6eSe1ddlBVqw==
 
-turbo@^2.5.2:
+turbo@2.5.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/turbo/-/turbo-2.5.2.tgz#c6be6379f7495166fb0cc87d5362da8c7e4093c6"
   integrity sha512-Qo5lfuStr6LQh3sPQl7kIi243bGU4aHGDQJUf6ylAdGwks30jJFloc9NYHP7Y373+gGU9OS0faA4Mb5Sy8X9Xw==
