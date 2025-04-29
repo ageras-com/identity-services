@@ -5,17 +5,15 @@ Testing pattern for monorepo
 
 # Dependencies
 
-## Yarn
+This will install, yarn, turbo and nestjs cli's globally.
 ```bash
 npm install -g yarn
-```
-
-## Turbo
-```bash
 yarn global add turbo
+yarn global add @nestjs/cli
 ```
 
-## NestJS/CLI
+# Running the project
 ```bash
-yarn global add @nestjs/cli
+yarn install
+yarn dev
 ```
