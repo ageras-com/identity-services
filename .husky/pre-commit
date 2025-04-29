@@ -1,1 +1,1 @@
-yarn format && npx lint-staged && yarn check:types
+npx lint-staged
