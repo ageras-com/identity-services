@@ -1,7 +1,5 @@
 # monorepo
-Testing pattern for monorepo
-
-
+Testing pattern for monorepo with [Turborepo](https://turborepo.com/docs)
 
 # Dependencies
 
