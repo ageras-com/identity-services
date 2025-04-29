@@ -15,20 +15,9 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "/apps/**/*.{js,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "/packages/**/*.{js,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.json": [
-      "prettier --write"
-    ],
-    "!**/node_modules/**": [],
-    "!**/.next/**": [],
-    "!**/dist/**": []
+    "apps/**/*.{js,ts,jsx,tsx}": [
+      "yarn lint"
+    ]
   },
   "devDependencies": {
     "turbo": "2.5.2",
