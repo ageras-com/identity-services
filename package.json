@@ -16,7 +16,6 @@
   },
   "lint-staged": {
     "apps/**/*.{js,ts,jsx,tsx}": [
-      "yarn format",
       "yarn lint"
     ],
     "!**/node_modules/**": []

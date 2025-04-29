@@ -11,6 +11,9 @@
     "lint": {
       "dependsOn": ["transit"]
     },
+    "format": {
+      "dependsOn": ["transit"]
+    },
     "dev": {
       "persistent": true,
       "cache": false
