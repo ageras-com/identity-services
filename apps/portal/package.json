@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint \"src/**/*.ts\" \"src/**/*.tsx\" --fix",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "format:check": "prettier --check \"src/**/*.ts\" \"src/**/*.tsx\""
+    "format:check": "prettier --check \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "check:types": "tsc --noEmit"
   },
   "dependencies": {
     "react": "19.0.0",

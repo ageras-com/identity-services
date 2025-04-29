@@ -12,6 +12,7 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint --",
     "format": "turbo run format",
+    "check:types": "turbo run check:types",
     "prepare": "husky"
   },
   "lint-staged": {
