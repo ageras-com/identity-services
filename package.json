@@ -17,7 +17,7 @@
   },
   "lint-staged": {
     "apps/**/*.{js,ts,jsx,tsx}": [
-      "prettier --check",
+      "prettier --write",
       "yarn lint"
     ]
   },
