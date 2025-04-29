@@ -15,14 +15,25 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "apps/**/*.{js,ts,jsx,tsx}": [
-      "yarn lint"
+    "/apps/**/*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
     ],
-    "!**/node_modules/**": []
+    "/packages/**/*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ],
+    "!**/node_modules/**": [],
+    "!**/.next/**": [],
+    "!**/dist/**": []
   },
   "devDependencies": {
     "turbo": "2.5.2",
     "husky": "9.1.7",
-    "lint-staged": "15.5.1"
+    "lint-staged": "15.5.1",
+    "prettier": "3.4.2"
   }
 }
