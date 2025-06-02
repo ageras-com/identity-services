@@ -10,8 +10,21 @@ yarn global add turbo
 yarn global add @nestjs/cli
 ```
 
+# DB
+
+Setup docker-compose to run the database.
+```bash
+cd apps/api
+docker-compose up -d
+```
+
 # Running the project
 ```bash
 yarn install
 yarn dev
+```
+
+# Create new migrations
+```bash
+typeorm migration:create ./apps/api/migrations/{NameOfMigration}
 ```
