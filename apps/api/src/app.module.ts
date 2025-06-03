@@ -5,20 +5,7 @@ import { SharedModule } from "./shared/shared.module"
 import { UserModule } from "./user/user.module"
 
 @Module({
-  imports: [
-    SharedModule,
-    UserModule,
-    // TypeOrmModule.forRoot({
-    //   type: "postgres",
-    //   host: "localhost",
-    //   port: 5432,
-    //   username: "postgres",
-    //   password: "postgres",
-    //   database: "monorepo",
-    //   entities: [],
-    //   synchronize: false,
-    // }),
-  ],
+  imports: [SharedModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
