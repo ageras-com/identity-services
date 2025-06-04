@@ -1,5 +1,5 @@
 {
-  "name": "monorepo",
+  "name": "identiy-services",
   "version": "0.0.1",
   "private": true,
   "packageManager": "yarn@1.22.22",

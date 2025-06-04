@@ -1,12 +1,12 @@
 services:
-  monorepo-api-db:
+  identity-services-db:
     image: postgres:17
-    container_name: monorepo-api-db
+    container_name: identity-services-db
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: monorepo
+      POSTGRES_DB: identity-services
     ports:
       - "5432:5432"
     volumes:
