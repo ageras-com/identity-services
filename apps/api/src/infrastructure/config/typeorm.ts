@@ -1,6 +1,6 @@
 import { DataSource, DataSourceOptions } from "typeorm"
-import migrationModules from "../../../../migrations"
 import entities from "./entities"
+import migrations from "../../../migrations"
 
 export const dataSourceOptions = {
   type: "postgres",
@@ -11,8 +11,8 @@ export const dataSourceOptions = {
   database: process.env.DB_NAME ?? "identity-services",
   synchronize: false,
   migrationsRun: false,
-  entities: entities,
-  migrations: migrationModules,
+  entities,
+  migrations,
 } satisfies DataSourceOptions
 
 /**
