@@ -6,8 +6,8 @@ import { EnvironmentVariables } from "./infrastructure/config/configuration"
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const configService =
-    app.get<ConfigService<EnvironmentVariables>>(ConfigService)
-  const port = configService.getOrThrow("port", { infer: true })
+    app.get<ConfigService<EnvironmentVariables, true>>(ConfigService)
+  const port = configService.get("database.type", { infer: true })
 
   await app.listen(port)
 }
