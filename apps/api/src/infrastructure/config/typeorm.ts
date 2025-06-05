@@ -1,14 +1,15 @@
 import { DataSource, DataSourceOptions } from "typeorm"
 import entities from "./entities"
 import migrations from "../../../migrations"
+import env from "./env"
 
 export const dataSourceOptions = {
   type: "postgres",
-  host: process.env.DB_HOST ?? "localhost",
-  port: process.env.DB_PORT ? +process.env.DB_PORT : 5432,
-  username: process.env.DB_USER ?? "postgres",
-  password: process.env.DB_PASSWORD ?? "postgres",
-  database: process.env.DB_NAME ?? "identity-services",
+  host: env.database.host,
+  port: env.database.port,
+  username: env.database.username,
+  password: env.database.password,
+  database: env.database.name,
   synchronize: false,
   migrationsRun: false,
   entities,

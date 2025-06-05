@@ -1,22 +1,14 @@
-import { Inject, Injectable } from "@nestjs/common"
+import { Injectable } from "@nestjs/common"
 import { IUserRepository } from "../../domain/repositories/user.repository"
 import { CreateUserDto } from "../dtos/create-user.dto"
 import { UserDto } from "../dtos/user.dto"
-import configuration from "../../infrastructure/config/configuration"
-import { ConfigType } from "@nestjs/config"
 
 @Injectable()
 export class UserService {
-  constructor(
-    private readonly userRepository: IUserRepository,
-    @Inject(configuration.KEY)
-    private config: ConfigType<typeof configuration>,
-  ) {}
+  constructor(private readonly userRepository: IUserRepository) {}
 
   async getUsers(): Promise<UserDto[]> {
     const users = await this.userRepository.getUsers()
-    const host = this.config.port
-    console.log(host)
     return users.map((user) => ({
       id: user.id,
       name: user.name,
