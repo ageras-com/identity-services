@@ -1,7 +1,7 @@
 import { DataSource, DataSourceOptions } from "typeorm"
 import entities from "./entities"
-import migrations from "../../../migrations"
-import env from "./env"
+import migrations from "../../../../migrations"
+import env from "./../env"
 
 export const dataSourceOptions = {
   type: "postgres",
