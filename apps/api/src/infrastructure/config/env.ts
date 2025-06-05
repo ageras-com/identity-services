@@ -4,9 +4,9 @@ const envSchema = z.object({
   NODE_ENV: z
     .enum(["development", "production", "test"])
     .default("development"),
-  PORT: z.coerce.number().default(4001),
+  PORT: z.coerce.number().default(3301),
   DB_HOST: z.string().default("localhost"),
-  DB_PORT: z.coerce.number().default(5432),
+  DB_PORT: z.coerce.number().default(3302),
   DB_USERNAME: z.string().default("postgres"),
   DB_PASSWORD: z.string().default("postgres"),
   DB_NAME: z.string().default("identity-services"),

@@ -4,7 +4,7 @@ Identity Services for IAM maintained by Core Services
 
 # Dependencies
 
-This will install, yarn, turbo and nestjs cli's globally.
+This will install yarn, turbo, and nestjs cli globally.
 
 ```bash
 npm install -g yarn
@@ -17,8 +17,7 @@ yarn global add @nestjs/cli
 Setup docker-compose to run the database.
 
 ```bash
-cd apps/api
-docker-compose up -d
+docker-compose -f apps/api/docker-compose.yml up -d
 ```
 
 # Running the project
@@ -28,8 +27,11 @@ yarn install
 yarn dev
 ```
 
-# Create new migrations
+# Project resources overview
 
-```bash
-typeorm migration:create ./apps/api/migrations/{NameOfMigration}
-```
+| Resource    | Description                   | Address                   |
+|-------------|-------------------------------|---------------------------|
+| Portal      | Identity Services Portal      | http://localhost:3300     |
+| API         | Identity Services API         | http://localhost:3301     |
+| API Swagger | Identity Services API Swagger | http://localhost:3301/api |
+| DB          | Identity Services Database    | localhost:3302            |
