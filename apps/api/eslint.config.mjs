@@ -38,6 +38,12 @@ export default tseslint.config(
             "Direct access to process.env is not allowed. Use the typed `src/infrastructure/config/env.ts` instead.",
         },
       ],
+      "no-console": [
+        "error",
+        {
+          allow: ["warn", "error", "info"],
+        },
+      ],
     },
   },
 )
