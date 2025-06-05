@@ -29,9 +29,9 @@ yarn dev
 
 # Project resources overview
 
-| Resource    | Description                   | Address                   |
-|-------------|-------------------------------|---------------------------|
-| Portal      | Identity Services Portal      | http://localhost:3300     |
-| API         | Identity Services API         | http://localhost:3301     |
-| API Swagger | Identity Services API Swagger | http://localhost:3301/api |
-| DB          | Identity Services Database    | localhost:3302            |
+| Resource    | Description                   | Technology  | Address                   |
+|-------------|-------------------------------|-------------|---------------------------|
+| Portal      | Identity Services Portal      | React       | http://localhost:3300     |
+| API         | Identity Services API         | NestJS      | http://localhost:3301     |
+| API Swagger | Identity Services API Swagger | Swagger     | http://localhost:3301/api |
+| DB          | Identity Services Database    | PostgresSQL | localhost:3302            |
