@@ -7,6 +7,7 @@ import configuration from "./infrastructure/config/configuration"
   imports: [
     ConfigModule.forRoot({
       load: [configuration],
+      isGlobal: true,
     }),
     SharedModule,
   ],
