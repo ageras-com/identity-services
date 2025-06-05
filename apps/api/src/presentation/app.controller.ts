@@ -1,4 +1,4 @@
-import { Controller, Get, Logger } from "@nestjs/common"
+import { Controller, Get } from "@nestjs/common"
 
 @Controller()
 export class AppController {
@@ -6,8 +6,7 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    const logger = new Logger("AppController")
-    logger.log("Ping Hello World!")
+    console.log("Hello World!")
     return "Ping Hello World!"
   }
 }
