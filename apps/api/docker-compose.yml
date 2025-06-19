@@ -1,3 +1,5 @@
+name: identity-services
+
 services:
   identity-services-db:
     image: postgres:17
