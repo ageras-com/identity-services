@@ -5,8 +5,10 @@
 ## Create
 
 ```bash
-typeorm migration:create ./apps/api/migrations/{NameOfMigration}
+npm run migration:create --name=<migration-name>
 ```
+
+Remember to import the script into `apps/api/migrations/index.ts`
 
 ## Run
 
