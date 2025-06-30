@@ -5,7 +5,7 @@ export class CreateAudits1750946401639 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE "Audits"
       (
-        "id"        UUID PRIMARY KEY   DEFAULT uuid_generate_v4(),
+        "auditId"   UUID PRIMARY KEY   DEFAULT uuid_generate_v4(),
         "entity"    VARCHAR(32),
         "entityId"  UUID      NOT NULL,
         "source"    VARCHAR(32),

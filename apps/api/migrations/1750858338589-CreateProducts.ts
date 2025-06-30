@@ -5,7 +5,7 @@ export class CreateProducts1750858338589 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE "Products"
       (
-        "id" VARCHAR(32) PRIMARY KEY
+        "productId" VARCHAR(32) PRIMARY KEY
       );
     `)
   }

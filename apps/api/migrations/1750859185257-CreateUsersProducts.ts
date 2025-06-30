@@ -1,24 +1,25 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
 
-export class CreateUsersToOrganizations1750858663585
+export class CreateUsersToProductIds1750859185257
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      CREATE TABLE "UsersToOrganizations"
+      CREATE TABLE "UsersProducts"
       (
-        "globalUserId" uuid NOT NULL,
-        "globalOrgId"  uuid NOT NULL,
-        PRIMARY KEY ("globalUserId", "globalOrgId"),
+        "globalUserId"  uuid        NOT NULL,
+        "productUserId" VARCHAR(64) NOT NULL,
+        "productId"     VARCHAR(32) NOT NULL,
+        PRIMARY KEY ("globalUserId", "productUserId", "productId"),
         CONSTRAINT "FK_users_globalUserId" FOREIGN KEY ("globalUserId") REFERENCES "Users" ("globalUserId") ON DELETE CASCADE,
-        CONSTRAINT "FK_organizations_globalOrgId" FOREIGN KEY ("globalOrgId") REFERENCES "Organizations" ("globalOrgId") ON DELETE CASCADE
+        CONSTRAINT "FK_products_id" FOREIGN KEY ("productId") REFERENCES "Products" ("productId") ON DELETE CASCADE
       );
     `)
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      DROP TABLE "UsersToOrganizations";
+      DROP TABLE "UsersProducts";
     `)
   }
 }

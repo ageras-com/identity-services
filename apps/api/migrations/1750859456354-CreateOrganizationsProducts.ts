@@ -9,22 +9,22 @@ export class CreateOrganizationsToProductIds1750859456354
     `)
 
     await queryRunner.query(`
-      CREATE TABLE "OrganizationsToProductIds"
+      CREATE TABLE "OrganizationsProducts"
       (
         "globalOrgId"  uuid                NOT NULL,
         "productOrgId" VARCHAR(64)         NOT NULL,
-        "product"      VARCHAR(32)         NOT NULL,
+        "productId"    VARCHAR(32)         NOT NULL,
         "status"       organization_status NOT NULL DEFAULT 'active',
-        PRIMARY KEY ("globalOrgId", "productOrgId", "product"),
+        PRIMARY KEY ("globalOrgId", "productOrgId", "productId"),
         CONSTRAINT "FK_user_globalOrgId" FOREIGN KEY ("globalOrgId") REFERENCES "Organizations" ("globalOrgId") ON DELETE CASCADE,
-        CONSTRAINT "FK_product_id" FOREIGN KEY ("product") REFERENCES "Products" ("id") ON DELETE CASCADE
+        CONSTRAINT "FK_product_id" FOREIGN KEY ("productId") REFERENCES "Products" ("productId") ON DELETE CASCADE
       );
     `)
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      DROP TABLE "OrganizationsToProductIds";
+      DROP TABLE "OrganizationsProducts";
     `)
     await queryRunner.query(`
       DROP TYPE public.organization_status;
