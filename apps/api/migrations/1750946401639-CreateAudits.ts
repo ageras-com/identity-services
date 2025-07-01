@@ -5,14 +5,15 @@ export class CreateAudits1750946401639 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE "Audits"
       (
-        "auditId"   UUID PRIMARY KEY   DEFAULT uuid_generate_v4(),
+        "auditId"   UUID               DEFAULT uuid_generate_v4(),
+        "createdAt" TIMESTAMP NOT NULL DEFAULT now(),
         "entity"    VARCHAR(32),
         "entityId"  UUID      NOT NULL,
         "source"    VARCHAR(32),
         "eventType" VARCHAR(32),
         "eventId"   VARCHAR(64),
         "data"      jsonb,
-        "createdAt" TIMESTAMP NOT NULL DEFAULT now()
+        CONSTRAINT "PK_Audits_auditId" PRIMARY KEY ("auditId")
       );
     `)
   }
