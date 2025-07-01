@@ -1,11 +1,9 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
 
-export class CreateUsersToProductIds1750859185257
-  implements MigrationInterface
-{
+export class CreateUserProducts1750859185257 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      CREATE TABLE "UsersProducts"
+      CREATE TABLE "UserProducts"
       (
         "globalUserId"  uuid        NOT NULL,
         "productUserId" VARCHAR(64) NOT NULL,
@@ -19,7 +17,7 @@ export class CreateUsersToProductIds1750859185257
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      DROP TABLE "UsersProducts";
+      DROP TABLE "UserProducts";
     `)
   }
 }

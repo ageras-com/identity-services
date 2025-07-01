@@ -5,7 +5,8 @@ export class CreateOrganizations1750858266012 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE "Organizations"
       (
-        "globalOrgId" UUID PRIMARY KEY DEFAULT uuid_generate_v4()
+        "globalOrgId" UUID NOT NULL DEFAULT uuid_generate_v4(),
+        CONSTRAINT "PK_Organizations_globalOrgId" PRIMARY KEY ("globalOrgId")
       );
     `)
   }

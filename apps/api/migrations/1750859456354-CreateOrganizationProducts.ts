@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
 
-export class CreateOrganizationsToProductIds1750859456354
+export class CreateOrganizationProducts1750859456354
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -9,7 +9,7 @@ export class CreateOrganizationsToProductIds1750859456354
     `)
 
     await queryRunner.query(`
-      CREATE TABLE "OrganizationsProducts"
+      CREATE TABLE "OrganizationProducts"
       (
         "globalOrgId"  uuid                NOT NULL,
         "productOrgId" VARCHAR(64)         NOT NULL,
@@ -24,7 +24,7 @@ export class CreateOrganizationsToProductIds1750859456354
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      DROP TABLE "OrganizationsProducts";
+      DROP TABLE "OrganizationProducts";
     `)
     await queryRunner.query(`
       DROP TYPE public.organization_status;
