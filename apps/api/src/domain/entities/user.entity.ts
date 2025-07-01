@@ -1,19 +1,58 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+  UpdateDateColumn,
+} from "typeorm"
+import { UserOrganization } from "./userOrganization.entity"
+import { UserProduct } from "./userProduct.entity"
 
-@Entity()
+@Unique("UQ_Users_email", ["email"])
+@Unique("UQ_Users_phoneNumber", ["phoneNumber"])
+@Entity("Users", { schema: "public" })
 export class User {
-  @PrimaryGeneratedColumn("uuid")
-  id: string
+  @PrimaryGeneratedColumn("uuid", {
+    primaryKeyConstraintName: "PK_Users_globalUserId",
+  })
+  globalUserId: string
 
-  @Column()
-  name: string
-
-  @Column()
+  @CreateDateColumn()
   createdAt: Date
 
-  @Column()
+  @UpdateDateColumn()
   updatedAt: Date
 
-  @Column({ nullable: true, type: "timestamp" })
+  @DeleteDateColumn()
   deletedAt: Date | null
+
+  @Column("varchar", { nullable: true, length: 255 })
+  email: string | null
+
+  @Column("timestamp", { nullable: true })
+  emailVerifiedAt: Date | null
+
+  @Column("varchar", {
+    nullable: true,
+    length: 32,
+  })
+  phoneNumber: string | null
+
+  @Column("timestamp", { nullable: true })
+  phoneNumberVerifiedAt: Date | null
+
+  @Column("boolean", { default: () => "false" })
+  dataUpdatesLocked: boolean
+
+  @OneToMany(
+    () => UserOrganization,
+    (userOrganization) => userOrganization.user,
+  )
+  userOrganizations: UserOrganization[]
+
+  @OneToMany(() => UserProduct, (usersProducts) => usersProducts.user)
+  userProducts: UserProduct[]
 }
