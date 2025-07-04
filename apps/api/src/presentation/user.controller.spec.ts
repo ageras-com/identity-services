@@ -26,9 +26,12 @@ describe("UserController", () => {
 
   afterEach(async () => {
     if (userIdsCreated.size > 0) {
+      // Delete created users from the database
       await queryRunner.query(`DELETE
-                               FROM "user"
-                               WHERE id IN (${Array.from(userIdsCreated)
+                               FROM "Users"
+                               WHERE "globalUserId" IN (${Array.from(
+                                 userIdsCreated,
+                               )
                                  .map((id) => `'${id}'`)
                                  .join(", ")})`)
       await queryRunner.release()
