@@ -6,7 +6,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    console.log("Hello World!")
     return "Ping Hello World!"
   }
 }

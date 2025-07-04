@@ -1,11 +1,15 @@
-import { IsDate, IsString, IsUUID } from "@nestjs/class-validator"
+import { IsDate, IsOptional, IsString, IsUUID } from "@nestjs/class-validator"
 
 export class UserDto {
   @IsUUID()
-  id: string
+  globalUserId: string
 
   @IsString()
-  name: string
+  email: string | null
+
+  @IsOptional()
+  @IsString()
+  phoneNumber?: string | null
 
   @IsDate()
   createdAt: Date

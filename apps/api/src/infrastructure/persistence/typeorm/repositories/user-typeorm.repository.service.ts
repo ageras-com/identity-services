@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
-import { User } from "../../../../domain/entities/user.entity"
 import { Repository } from "typeorm"
-import { IUserRepository } from "../../../../domain/repositories/user.repository"
 import { CreateUserDto } from "../../../../application/dtos/create-user.dto"
+import { User } from "../../../../domain/entities/user.entity"
+import { IUserRepository } from "../../../../domain/repositories/user.repository"
 
 @Injectable()
 export class UserRepositoryTypeOrm implements IUserRepository {
@@ -16,8 +16,8 @@ export class UserRepositoryTypeOrm implements IUserRepository {
     return this.repository.find()
   }
 
-  async getUserById(id: string): Promise<User | null> {
-    return this.repository.findOne({ where: { id } })
+  async getUserById(globalUserId: string): Promise<User | null> {
+    return this.repository.findOne({ where: { globalUserId } })
   }
 
   async createUser(user: CreateUserDto): Promise<User> {

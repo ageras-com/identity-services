@@ -13,8 +13,9 @@ export class UserService {
     this.logger.log("Getting all users")
     const users = await this.userRepository.getUsers()
     return users.map((user) => ({
-      id: user.id,
-      name: user.name,
+      globalUserId: user.globalUserId,
+      phoneNumber: user.phoneNumber,
+      email: user.email,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     }))
@@ -29,20 +30,22 @@ export class UserService {
     }
 
     return {
-      id: user.id,
-      name: user.name,
+      globalUserId: user.globalUserId,
+      phoneNumber: user.phoneNumber,
+      email: user.email,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     }
   }
 
   async createUser(user: CreateUserDto): Promise<UserDto> {
-    this.logger.log(`Creating user with name: ${user.name}`, user)
+    this.logger.log(`Creating user with name: ${user.email}`, user)
     const userCreated = await this.userRepository.createUser(user)
 
     return {
-      id: userCreated.id,
-      name: userCreated.name,
+      globalUserId: userCreated.globalUserId,
+      email: userCreated.email,
+      phoneNumber: userCreated.phoneNumber,
       createdAt: userCreated.createdAt,
       updatedAt: userCreated.updatedAt,
     }

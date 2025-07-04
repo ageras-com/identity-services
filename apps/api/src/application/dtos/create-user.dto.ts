@@ -7,5 +7,13 @@ export class CreateUserDto {
     example: "John Doe",
   })
   @IsString()
-  name: string
+  email: string
+
+  @ApiProperty({
+    description: "The phone number of the user",
+    example: "+1234567890",
+    required: false,
+  })
+  @IsString()
+  phoneNumber?: string
 }
