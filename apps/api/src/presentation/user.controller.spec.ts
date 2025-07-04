@@ -1,11 +1,11 @@
-import { UserController } from "./user.controller"
-import { Test, TestingModule } from "@nestjs/testing"
-import { UserModule } from "../shared/user.module"
-import { TypeOrmModule } from "@nestjs/typeorm"
-import { dataSourceOptions } from "../infrastructure/config/typeorm/typeorm"
-import { DataSource, QueryRunner } from "typeorm"
 import { faker } from "@faker-js/faker/locale/en"
+import { Test, TestingModule } from "@nestjs/testing"
+import { TypeOrmModule } from "@nestjs/typeorm"
+import { DataSource, QueryRunner } from "typeorm"
 import { UserDto } from "../application/dtos/user.dto"
+import { dataSourceOptions } from "../infrastructure/config/typeorm/typeorm"
+import { UserModule } from "../shared/user.module"
+import { UserController } from "./user.controller"
 
 describe("UserController", () => {
   let userIdsCreated: Set<string> = new Set<string>()
@@ -46,9 +46,9 @@ describe("UserController", () => {
     it("should return a user object", async () => {
       const user = await createUser()
 
-      const result = await userController.getUserById(user.id)
-      expect(result.id).toEqual(user.id)
-      expect(result.name).toEqual(user.name)
+      const result = await userController.getUserById(user.globalUserId)
+      expect(result.globalUserId).toEqual(user.globalUserId)
+      expect(result.email).toEqual(user.email)
     })
   })
 
@@ -63,10 +63,13 @@ describe("UserController", () => {
   })
 
   const createUser = async (): Promise<UserDto> => {
-    const newUser = { name: faker.person.firstName() }
+    const newUser = {
+      email: faker.internet.email(),
+      name: faker.phone.number({ style: "international" }),
+    }
     const result = await userController.createUser(newUser)
-    userIdsCreated.add(result.id)
-    expect(result.name).toEqual(newUser.name)
+    userIdsCreated.add(result.globalUserId)
+    expect(result.email).toEqual(newUser.email)
     return result
   }
 })
