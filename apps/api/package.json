@@ -24,7 +24,7 @@
     "migration:create": "typeorm migration:create ./migrations/$npm_config_name",
     "migration:generate": "npm run typeorm -- migration:generate -d ./migrations/datasource.ts ./migrations/$npm_config_name",
     "migration:run": "npm run typeorm -- migration:run -d ./migrations/datasource.ts",
-    "db:create": "docker-compose up -d",
+    "db:create": "docker-compose up -d identity-services-db",
     "db:start": "npm run db:create && npm run migration:run",
     "db:destroy": "docker stop identity-services-db && docker rm identity-services-db && docker volume rm identity-services_postgres_data",
     "db:reset": "npm run db:destroy && npm run db:start"
