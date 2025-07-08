@@ -5,6 +5,7 @@ import { TypedConfigModule } from './config/typed-config.module';
 import { TypedConfigService } from './config/typed-config.service';
 
 import { dataSourceOptions, envSchema } from './typeorm/typeorm';
+import { AppLoggerModule } from './logging/logger.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { dataSourceOptions, envSchema } from './typeorm/typeorm';
       validationSchema: envSchema,
     }),
     TypedConfigModule,
+    AppLoggerModule,
     TypeOrmModule.forRootAsync({
       useFactory: (configService: TypedConfigService) => {
         return dataSourceOptions(configService) as TypeOrmModuleAsyncOptions;
@@ -21,4 +23,4 @@ import { dataSourceOptions, envSchema } from './typeorm/typeorm';
     }),
   ],
 })
-export class infrastructureModule {}
+export class InfrastructureModule {}

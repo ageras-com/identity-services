@@ -1,5 +1,5 @@
 import { Entity, OneToMany, PrimaryColumn } from 'typeorm';
-import { UserProduct } from '../../user/entities/userProduct.entity';
+import { UserProduct } from './userProduct.entity';
 import { OrganizationProduct } from '../../organization/entities/organizationProduct.entity';
 
 @Entity('Products', { schema: 'public' })

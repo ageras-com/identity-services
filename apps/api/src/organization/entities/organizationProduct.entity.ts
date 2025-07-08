@@ -6,7 +6,7 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from 'typeorm';
-import { Product } from '../../product/entities/product.entity';
+import { Product } from '../../user/entities/product.entity';
 import { Organization } from './organization.entity';
 import {
   OrganizationStatus,

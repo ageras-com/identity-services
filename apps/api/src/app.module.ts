@@ -1,19 +1,12 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { infrastructureModule } from './infrastructure/infrastructure.module';
-import { AppLoggerModule } from './infrastructure/logging/logger.module';
+import { InfrastructureModule } from './infrastructure/infrastructure.module';
 import { LoggerMiddleware } from './infrastructure/logging/logger.middleware';
 import { OrganizationModule } from './organization/organization.module';
-import { ProductModule } from './product/product.module';
 import { AuditModule } from './audit/audit.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [
-    infrastructureModule,
-    AppLoggerModule,
-    OrganizationModule,
-    ProductModule,
-    AuditModule,
-  ],
+  imports: [InfrastructureModule, UserModule, OrganizationModule, AuditModule],
   controllers: [],
   providers: [],
 })

@@ -1,6 +1,6 @@
 import { Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { User } from './user.entity';
-import { Product } from '../../product/entities/product.entity';
+import { Product } from './product.entity';
 
 @Entity('UserProducts', { schema: 'public' })
 @Index('IDX_UserProducts_globalUserId', ['globalUserId'])

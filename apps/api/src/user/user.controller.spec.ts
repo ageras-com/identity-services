@@ -5,7 +5,7 @@ import { UserModule } from '../user/user.module';
 import { UserController } from './user.controller';
 import { UserDto } from './dto/user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
-import { infrastructureModule } from '../infrastructure/infrastructure.module';
+import { InfrastructureModule } from '../infrastructure/infrastructure.module';
 import { User } from './entities/user.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
@@ -16,7 +16,7 @@ describe('UserController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [infrastructureModule, UserModule],
+      imports: [InfrastructureModule, UserModule],
     }).compile();
 
     userRepository = app.get<Repository<User>>(getRepositoryToken(User));

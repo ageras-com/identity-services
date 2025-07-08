@@ -1,6 +1,6 @@
 import { User } from '../../user/entities/user.entity';
 import { Organization } from '../../organization/entities/organization.entity';
-import { Product } from '../../product/entities/product.entity';
+import { Product } from '../../user/entities/product.entity';
 import { UserProduct } from '../../user/entities/userProduct.entity';
 import { OrganizationProduct } from '../../organization/entities/organizationProduct.entity';
 import { Audit } from '../../audit/entities/audit.entity';
