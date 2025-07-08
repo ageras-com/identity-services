@@ -30,6 +30,7 @@
     "db:reset": "npm run db:destroy && npm run db:start"
   },
   "dependencies": {
+    "@aws-sdk/client-sqs": "3.840.0",
     "@nestjs/class-validator": "0.13.4",
     "@nestjs/common": "11.0.16",
     "@nestjs/config": "4.0.2",
