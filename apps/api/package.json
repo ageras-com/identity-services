@@ -22,7 +22,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:create": "typeorm migration:create ./migrations/$npm_config_name",
-    "migration:generate": "npm run typeorm -- migration:generate -d ./src/infrastructure/config/typeorm/typeorm.ts ./migrations/$npm_config_name",
+    "migration:generate": "npm run typeorm -- migration:generate -d ./migrations/datasource.ts ./migrations/$npm_config_name",
     "migration:run": "npm run typeorm -- migration:run -d ./migrations/datasource.ts",
     "db:create": "docker-compose up -d",
     "db:start": "npm run db:create && npm run migration:run",
