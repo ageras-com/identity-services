@@ -7,7 +7,7 @@ import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    bufferLogs: true,
+    //bufferLogs: true,
   });
   configureSwagger(app);
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));

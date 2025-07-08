@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { SharedModule } from './infrastructure/shared.module';
+import { infrastructureModule } from './infrastructure/infrastructure.module';
 import { AppLoggerModule } from './infrastructure/logging/logger.module';
 import { LoggerMiddleware } from './infrastructure/logging/logger.middleware';
 import { OrganizationModule } from './organization/organization.module';
@@ -8,7 +8,7 @@ import { AuditModule } from './audit/audit.module';
 
 @Module({
   imports: [
-    SharedModule,
+    infrastructureModule,
     AppLoggerModule,
     OrganizationModule,
     ProductModule,

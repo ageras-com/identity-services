@@ -10,7 +10,7 @@ export interface DatabaseConfig {
   port: number;
   username: string;
   password: string;
-  database: string;
+  name: string;
 }
 export interface LoggerConfig {
   level: string;
@@ -45,7 +45,7 @@ export class TypedConfigService extends ConfigService {
       port: this.get<number>('DB_PORT', 5432),
       username: this.get<string>('DB_USERNAME', 'postgres'),
       password: this.get<string>('DB_PASSWORD', 'postgres'),
-      database: this.get<string>('DB_DATABASE', 'identity-services'),
+      name: this.get<string>('DB_NAME', 'identity-services'),
     };
   }
 
