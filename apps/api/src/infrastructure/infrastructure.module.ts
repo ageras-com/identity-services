@@ -4,6 +4,7 @@ import { TypedConfigModule } from './config/typed-config.module';
 import { TypedConfigService } from './config/typed-config.service';
 
 import { dataSourceOptions } from './typeorm/typeorm';
+import { HealthcheckController } from './healthcheck.controller';
 import { AppLoggerModule } from './logging/logger.module';
 
 @Module({
@@ -17,5 +18,6 @@ import { AppLoggerModule } from './logging/logger.module';
       inject: [TypedConfigService],
     }),
   ],
+  controllers: [HealthcheckController],
 })
 export class InfrastructureModule {}
