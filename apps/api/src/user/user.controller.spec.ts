@@ -1,40 +1,41 @@
 import { faker } from '@faker-js/faker/locale/en';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource, QueryRunner } from 'typeorm';
-import { dataSourceOptions } from '../infrastructure/typeorm/typeorm';
+import { Repository } from 'typeorm';
 import { UserModule } from '../user/user.module';
 import { UserController } from './user.controller';
 import { UserDto } from './dto/user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { infrastructureModule } from '../infrastructure/infrastructure.module';
+import { User } from './entities/user.entity';
+import { getRepositoryToken } from '@nestjs/typeorm';
 
 describe('UserController', () => {
   let userIdsCreated: Set<string> = new Set<string>();
   let userController: UserController;
-  let queryRunner: QueryRunner;
+  let userRepository: Repository<User>;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [TypeOrmModule.forRoot(dataSourceOptions), UserModule],
+      imports: [infrastructureModule, UserModule],
     }).compile();
 
-    userController = app.get<UserController>(UserController);
+    userRepository = app.get<Repository<User>>(getRepositoryToken(User));
 
-    const dataSource = new DataSource(dataSourceOptions);
-    await dataSource.initialize();
-    queryRunner = dataSource.createQueryRunner();
+    userController = app.get<UserController>(UserController);
   });
 
   afterEach(async () => {
     if (userIdsCreated.size > 0) {
       // Delete created users from the database
-      await queryRunner.query(`DELETE
-                               FROM "Users"
-                               WHERE "globalUserId" IN (${Array.from(
-                                 userIdsCreated,
-                               )
-                                 .map((id) => `'${id}'`)
-                                 .join(', ')})`);
-      await queryRunner.release();
+      await userRepository
+        .createQueryBuilder()
+        .delete()
+        .from(User)
+        .where('globalUserId IN (:...userIds)', {
+          userIds: Array.from(userIdsCreated),
+        })
+        .execute();
+
       userIdsCreated = new Set<string>();
     }
   });
@@ -66,13 +67,14 @@ describe('UserController', () => {
   });
 
   const createUser = async (): Promise<UserDto> => {
-    const newUser = {
+    const newUser: CreateUserDto = {
       email: faker.internet.email(),
-      name: faker.phone.number({ style: 'international' }),
+      phoneNumber: faker.phone.number({ style: 'international' }),
     };
     const result = await userController.createUser(newUser);
     userIdsCreated.add(result.globalUserId);
     expect(result.email).toEqual(newUser.email);
+    expect(result.phoneNumber).toEqual(newUser.phoneNumber);
     return result;
   };
 });

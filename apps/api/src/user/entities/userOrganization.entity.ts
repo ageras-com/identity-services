@@ -1,7 +1,7 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 
 import { User } from './user.entity';
-import { Organization } from 'src/organization/entities/organization.entity';
+import { Organization } from '../../organization/entities/organization.entity';
 
 @Entity('UserOrganizations', { schema: 'public' })
 export class UserOrganization {

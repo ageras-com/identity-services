@@ -10,7 +10,7 @@ export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   async getUsers(): Promise<UserDto[]> {
-    this.logger.log('Getting all users');
+    this.logger.debug('Getting all users');
     const users = await this.userRepository.getUsers();
     return users.map((user) => ({
       globalUserId: user.globalUserId,
@@ -22,7 +22,7 @@ export class UserService {
   }
 
   async getUserById(id: string): Promise<UserDto> {
-    this.logger.log(`Getting user by id: ${id}`);
+    this.logger.debug(`Getting user by id: ${id}`);
     const user = await this.userRepository.getUserById(id);
 
     if (!user) {
@@ -39,7 +39,7 @@ export class UserService {
   }
 
   async createUser(user: CreateUserDto): Promise<UserDto> {
-    this.logger.log(`Creating user with name: ${user.email}`, user);
+    this.logger.debug(`Creating user with name: ${user.email}`, user);
     const userCreated = await this.userRepository.createUser(user);
 
     return {

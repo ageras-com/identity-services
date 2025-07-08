@@ -1,23 +1,31 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
+import * as Joi from 'joi';
+import { TypedConfigService } from '../config/typed-config.service';
+import { DataSourceOptions } from 'typeorm';
 import entities from './entities';
-import migrations from '../../../migrations';
-import env from '../config/env';
 
-export const dataSourceOptions = {
+export const envSchema = Joi.object({
+  DB_HOST: Joi.string().default('localhost'),
+  DB_NAME: Joi.string().default('identity-services'),
+  DB_PASSWORD: Joi.string().default('postgres'),
+  DB_PORT: Joi.number().default(3302),
+  DB_USERNAME: Joi.string().default('postgres'),
+  LOG_LEVEL: Joi.string().optional().default('info'),
+  NODE_ENV: Joi.string()
+    .valid('development', 'production', 'test')
+    .default('development'),
+  PORT: Joi.number().optional().default(4001),
+});
+export const dataSourceOptions = (
+  configService: TypedConfigService,
+): DataSourceOptions => ({
   type: 'postgres',
-  host: env.database.host,
-  port: env.database.port,
-  username: env.database.username,
-  password: env.database.password,
-  database: env.database.name,
+  host: configService.database.host,
+  port: +configService.database.port,
+  username: configService.database.username,
+  password: configService.database.password,
+  database: configService.database.name,
   synchronize: false,
+  logging: true,
   migrationsRun: false,
   entities,
-  migrations,
-} satisfies DataSourceOptions;
-
-/**
- * TypeORM expects a DataSource instance export when running migrations in the config file
- * This should not be used for anything else
- */
-export const migrationDataSource = new DataSource(dataSourceOptions);
+});
