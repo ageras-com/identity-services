@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
+export type EnvironmentType = 'development' | 'production' | 'test';
+
 export interface ServerConfig {
   port: number;
-  environment: 'development' | 'production' | 'test';
+  environment: EnvironmentType;
 }
 export interface DatabaseConfig {
   host: string;
@@ -30,28 +32,25 @@ export class TypedConfigService extends ConfigService {
   // Server configuration
   get server(): ServerConfig {
     return {
-      port: this.get<number>('PORT', 3301),
-      environment: this.get<'development' | 'production' | 'test'>(
-        'NODE_ENV',
-        'development',
-      ),
+      port: this.get<number>('PORT') as number,
+      environment: this.get<EnvironmentType>('NODE_ENV') as EnvironmentType,
     };
   }
 
   // Database configuration
   get database(): DatabaseConfig {
     return {
-      host: this.get<string>('DB_HOST', 'localhost'),
-      port: this.get<number>('DB_PORT', 5432),
-      username: this.get<string>('DB_USERNAME', 'postgres'),
-      password: this.get<string>('DB_PASSWORD', 'postgres'),
-      name: this.get<string>('DB_NAME', 'identity-services'),
+      host: this.get<string>('DB_HOST') as string,
+      port: this.get<number>('DB_PORT') as number,
+      username: this.get<string>('DB_USERNAME') as string,
+      password: this.get<string>('DB_PASSWORD') as string,
+      name: this.get<string>('DB_NAME') as string,
     };
   }
 
   get logger(): LoggerConfig {
     return {
-      level: this.get<string>('LOG_LEVEL', 'info'),
+      level: this.get<string>('LOG_LEVEL') as string,
     };
   }
 
