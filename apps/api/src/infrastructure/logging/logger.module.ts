@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { WinstonModule } from 'nest-winston';
-import { WinstonConfigService } from '../../infrastructure/config/winston';
+import { WinstonService } from './winston.service';
 
 @Module({
   imports: [
     WinstonModule.forRootAsync({
-      useClass: WinstonConfigService,
+      useClass: WinstonService,
     }),
   ],
 })

@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from '../user/user.module';
-import { dataSourceOptions } from '../infrastructure/config/typeorm/typeorm';
+import { dataSourceOptions } from './typeorm/typeorm';
 import * as Joi from 'joi';
 import { ConfigModule } from '@nestjs/config';
+import { TypedConfigModule } from './config/typed-config.module';
 
 export const envSchema = Joi.object({
   DB_HOST: Joi.string().default('localhost'),
@@ -24,6 +25,7 @@ export const envSchema = Joi.object({
       isGlobal: true,
       validationSchema: envSchema,
     }),
+    TypedConfigModule,
     TypeOrmModule.forRoot(dataSourceOptions),
     UserModule,
   ],

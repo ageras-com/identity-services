@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker/locale/en';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource, QueryRunner } from 'typeorm';
-import { dataSourceOptions } from '../infrastructure/config/typeorm/typeorm';
+import { dataSourceOptions } from '../infrastructure/typeorm/typeorm';
 import { UserModule } from '../user/user.module';
 import { UserController } from './user.controller';
 import { UserDto } from './dto/user.dto';
