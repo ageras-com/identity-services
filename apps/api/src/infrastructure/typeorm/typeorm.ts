@@ -25,7 +25,7 @@ export const dataSourceOptions = (
   password: configService.database.password,
   database: configService.database.name,
   synchronize: false,
-  logging: true,
+  logging: configService.server.environment === 'development' ? true : false,
   migrationsRun: false,
   entities,
 });
