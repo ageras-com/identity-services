@@ -14,5 +14,23 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+
+  # INFO: Since the version 1, localstack doesn't provide PERSISTENCE without the pro version.
+  # Every time te container restarts, the data it contains will be lost.
+  # We can however rely on hook to configure the necessary services when the container is started.
+  # https://docs.localstack.cloud/references/init-hooks/
+  # The community docker image localstack-persist sohuld be looked into if the absence of persistence
+  # becomes an issue.
+  # https://hub.docker.com/r/gresau/localstack-persist
+  localstack:
+    image: localstack/localstack:4
+    volumes:
+      - ./docker/localstack/localstack_ready.sh:/etc/localstack/init/ready.d/localstack_ready.sh
+    ports:
+      - 4566:4566 # LocalStack Edge port (Gateway)
+    environment:
+      # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
+      - DEBUG=${DEBUG:-0}
+
 volumes:
   postgres_data:
