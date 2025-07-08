@@ -13,5 +13,5 @@ export const configEnvSchema = Joi.object({
   NODE_ENV: Joi.string()
     .valid('development', 'production', 'test')
     .default('development'),
-  PORT: Joi.number().optional().default(4001),
+  PORT: Joi.number().optional().default(3301),
 }).concat(envDbSchema);
