@@ -1,12 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { ApiModule } from './api.module';
 import { configureSwagger } from './infrastructure/utils/swagger';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { TypedConfigService } from './infrastructure/config/typed-config.service';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create(ApiModule, {
     //bufferLogs: true,
   });
   configureSwagger(app);

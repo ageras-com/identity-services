@@ -4,5 +4,13 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true
+  },
+  "projects": {
+    "api": {
+      "type": "application",
+      "root": "src",
+      "entryFile": "api.main",
+      "sourceRoot": "src"
+    }
   }
 }
