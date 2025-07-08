@@ -1,20 +1,20 @@
-import { z } from "zod"
+import { z } from 'zod';
 
 const envSchema = z.object({
   NODE_ENV: z
-    .enum(["development", "production", "test"])
-    .default("development"),
+    .enum(['development', 'production', 'test'])
+    .default('development'),
   PORT: z.coerce.number().default(3301),
-  DB_HOST: z.string().default("localhost"),
+  DB_HOST: z.string().default('localhost'),
   DB_PORT: z.coerce.number().default(3302),
-  DB_USERNAME: z.string().default("postgres"),
-  DB_PASSWORD: z.string().default("postgres"),
-  DB_NAME: z.string().default("identity-services"),
-  LOG_LEVEL: z.string().default("info"),
-})
+  DB_USERNAME: z.string().default('postgres'),
+  DB_PASSWORD: z.string().default('postgres'),
+  DB_NAME: z.string().default('identity-services'),
+  LOG_LEVEL: z.string().default('info'),
+});
 
 // eslint-disable-next-line no-restricted-syntax
-const envParsed = envSchema.parse(process.env)
+const envParsed = envSchema.parse(process.env);
 
 export default {
   nodeEnv: envParsed.NODE_ENV,
@@ -27,4 +27,4 @@ export default {
     name: envParsed.DB_NAME,
   },
   logLevel: envParsed.LOG_LEVEL,
-}
+};

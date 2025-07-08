@@ -1,14 +1,14 @@
-import { NestFactory } from "@nestjs/core"
-import { AppModule } from "./app.module"
-import env from "./infrastructure/config/env"
-import { configureSwagger } from "./infrastructure/config/swagger"
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import env from './infrastructure/config/env';
+import { configureSwagger } from './infrastructure/config/swagger';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
+  const app = await NestFactory.create(AppModule);
 
-  configureSwagger(app)
+  configureSwagger(app);
 
-  await app.listen(env.port)
+  await app.listen(env.port);
 }
 
-void bootstrap()
+void bootstrap();
