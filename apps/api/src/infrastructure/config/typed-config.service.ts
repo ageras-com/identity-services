@@ -4,9 +4,13 @@ import { ConfigService } from '@nestjs/config';
 export type EnvironmentType = 'development' | 'production' | 'test';
 
 export interface ServerConfig {
-  port: number;
   environment: EnvironmentType;
 }
+
+export interface ApiConfig {
+  port: number;
+}
+
 export interface DatabaseConfig {
   host: string;
   port: number;
@@ -14,6 +18,7 @@ export interface DatabaseConfig {
   password: string;
   name: string;
 }
+
 export interface LoggerConfig {
   level: string;
 }
@@ -21,6 +26,7 @@ export interface LoggerConfig {
 export interface AppConfig {
   server: ServerConfig;
   database: DatabaseConfig;
+  api: ApiConfig;
 }
 
 @Injectable()
@@ -32,9 +38,14 @@ export class TypedConfigService extends ConfigService {
   // Server configuration
   get server(): ServerConfig {
     return {
-      port: this.get<number>('PORT') as number,
       environment: this.get<EnvironmentType>('NODE_ENV') as EnvironmentType,
     };
+  }
+
+  get api(): ApiConfig {
+    return {
+      port: this.get<number>('API_PORT') as number,
+    }
   }
 
   // Database configuration
@@ -59,6 +70,7 @@ export class TypedConfigService extends ConfigService {
     return {
       server: this.server,
       database: this.database,
+      api: this.api,
     };
   }
 }

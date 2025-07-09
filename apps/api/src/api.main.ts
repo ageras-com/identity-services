@@ -15,7 +15,7 @@ async function bootstrap() {
   const configService = app.get(TypedConfigService);
   const logger = app.get<Logger>(WINSTON_MODULE_NEST_PROVIDER);
 
-  await app.listen(configService.server.port || 4001);
+  await app.listen(configService.api.port);
   logger.log(
     `🚀 Application is running on: ${await app.getUrl()}`,
     'Bootstrap',
