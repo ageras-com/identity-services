@@ -14,4 +14,10 @@ export const configEnvSchema = Joi.object({
     .valid('development', 'production', 'test')
     .default('development'),
   API_PORT: Joi.number().optional().default(3301),
+  WORKER_PORT: Joi.number().optional().default(3303),
+  WORKER_QUEUE_URL: Joi.string()
+    .optional()
+    .default(
+      'http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/IncomingIdentityEvents',
+    ),
 }).concat(envDbSchema);

@@ -11,6 +11,12 @@
       "root": "src",
       "entryFile": "api.main",
       "sourceRoot": "src"
+    },
+    "worker": {
+      "type": "application",
+      "root": "src",
+      "entryFile": "worker.main",
+      "sourceRoot": "src"
     }
   }
 }

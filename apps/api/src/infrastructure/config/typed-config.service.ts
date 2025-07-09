@@ -11,6 +11,13 @@ export interface ApiConfig {
   port: number;
 }
 
+export interface WorkerConfig {
+  port: number;
+  queue: {
+    url: string;
+  };
+}
+
 export interface DatabaseConfig {
   host: string;
   port: number;
@@ -27,6 +34,7 @@ export interface AppConfig {
   server: ServerConfig;
   database: DatabaseConfig;
   api: ApiConfig;
+  worker: WorkerConfig;
 }
 
 @Injectable()
@@ -45,7 +53,16 @@ export class TypedConfigService extends ConfigService {
   get api(): ApiConfig {
     return {
       port: this.get<number>('API_PORT') as number,
-    }
+    };
+  }
+
+  get worker(): WorkerConfig {
+    return {
+      port: this.get<number>('WORKER_PORT') as number,
+      queue: {
+        url: this.get<string>('WORKER_QUEUE_URL') as string,
+      },
+    };
   }
 
   // Database configuration
@@ -71,6 +88,7 @@ export class TypedConfigService extends ConfigService {
       server: this.server,
       database: this.database,
       api: this.api,
+      worker: this.worker,
     };
   }
 }
