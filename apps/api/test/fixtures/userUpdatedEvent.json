@@ -1,0 +1,46 @@
+{
+    "version": "0",
+    "id": "70931bdf-a90b-a6b2-a63f-048138483eab",
+    "detail-type": "UserUpdatedDomain",
+    "source": "billy-api-gateway",
+    "account": "783299916304",
+    "time": "2025-07-07T12:31:05Z",
+    "region": "eu-north-1",
+    "resources": [],
+    "detail": {
+        "data": {
+            "id": "8X3G2tUhTyyAmUjprrkknw",
+            "createdTime": "2024-03-14T12:21:29.000+00:00",
+            "modifiedTime": "2025-07-07T12:31:02.000+00:00",
+            "email": "michal+1@ageras.com",
+            "password": "50daf84f56b9124e4159ddeb20d9326e231d7e835889eec01c",
+            "name": "michal+1",
+            "profilePicFileId": "r8rQZxnQS7e0DYhejpcamQm1Tv0cHs8crrYZk9b2uUVVnNXhkm7zRSJD39gUnhvd",
+            "profilePicUrl": "https://billy-staging-eu.s3.amazonaws.com/files/r/8/r/Q/Z/x/n/Q/S/7/e/0/D/Y/h/e/j/p/c/a/m/Q/m/1/T/v/0/c/H/s/8/c/r/r/Y/Z/k/9/b/2/u/U/V/V/n/N/X/h/k/m/7/z/R/S/J/D/3/9/g/U/n/h/v/d/r8rQZxnQS7e0DYhejpcamQm1Tv0cHs8crrYZk9b2uUVVnNXhkm7zRSJD39gUnhvd/1/stark.jpg",
+            "profilePic48Url": "https://billy-staging-eu.s3.amazonaws.com/files/p/J/2/k/N/7/S/X/T/m/G/7/O/3/C/u/S/j/O/c/F/w/D/p/Y/9/i/6/H/j/O/E/7/u/6/6/n/B/C/H/F/A/R/z/r/V/6/I/d/U/5/L/u/U/r/C/U/L/u/D/m/M/P/x/pJ2kN7SXTmG7O3CuSjOcFwDpY9i6HjOE7u66nBCHFARzrV6IdU5LuUrCULuDmMPx/1/stark.jpg",
+            "isBeta": "0",
+            "isBetaBonusUsed": "0",
+            "isCalled": "0",
+            "isStaff": "0",
+            "isSupporter": "0",
+            "isAdmin": "0",
+            "isGdprManager": "0",
+            "isSupportAccessAllowed": "0",
+            "isAdvanced": "0",
+            "canCreateDaybooks": "0",
+            "locale": "en_US",
+            "themeMode": "light",
+            "receiveMarketingEmails": "0",
+            "globalId": "e3ac6761-59df-47df-95bc-8b36aa76b2ad",
+            "source": "billy",
+            "analytics": "[]",
+            "context": "signup"
+        },
+        "metadata": {
+            "RECORD_CREATED_AT": "2025-07-07T12:31:02.576Z",
+            "RECORD_UPDATED_PROPERTIES": [
+                "locale"
+            ]
+        }
+    }
+}

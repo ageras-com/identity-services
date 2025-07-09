@@ -1,0 +1,41 @@
+{
+    "version": "0",
+    "id": "f53c92b4-63f9-2367-32f9-ac6a9272fa7e",
+    "detail-type": "UserCreatedDomain",
+    "source": "billy-api-gateway",
+    "account": "783299916304",
+    "time": "2025-07-07T11:39:56Z",
+    "region": "eu-north-1",
+    "resources": [],
+    "detail": {
+        "data": {
+            "id": "nCxLJrJfSOygkdD4E8R6kQ",
+            "createdTime": "2025-07-07T11:39:48.000+00:00",
+            "modifiedTime": "2025-07-07T11:39:48.000+00:00",
+            "email": "janm+cv3@ageras.com",
+            "password": "2344d57514b336a1c7803263b680a4c43eb7b2356b40a39324",
+            "name": "janm+cv3",
+            "isBeta": "0",
+            "isBetaBonusUsed": "0",
+            "isCalled": "0",
+            "isStaff": "0",
+            "isSupporter": "0",
+            "isAdmin": "0",
+            "isGdprManager": "0",
+            "isSupportAccessAllowed": "0",
+            "isAdvanced": "0",
+            "canCreateDaybooks": "0",
+            "locale": "en_US",
+            "themeMode": "auto",
+            "receiveMarketingEmails": "0",
+            "externalId": "175188838627742",
+            "globalId": "30ca8e0e-d89e-4f29-b8bd-967d853089ed",
+            "source": "zervant",
+            "analytics": "[]",
+            "context": "signup"
+        },
+        "metadata": {
+            "RECORD_CREATED_AT": "2025-07-07T11:39:48.139Z"
+        }
+    }
+}
