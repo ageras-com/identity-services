@@ -1,15 +1,17 @@
 import {
-  Controller,
-  Get,
-  Post,
+  CreateOrganizationDto,
+  OrganizationService,
+  UpdateOrganizationDto,
+} from '@identity-services/common';
+import {
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
-import { OrganizationService } from './organization.service';
-import { CreateOrganizationDto } from './dto/create-organization.dto';
-import { UpdateOrganizationDto } from './dto/update-organization.dto';
 
 @Controller('organization')
 export class OrganizationController {
