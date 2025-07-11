@@ -1,0 +1,18 @@
+name: identity-services
+
+services:
+  identity-services-db:
+    image: postgres:17
+    container_name: identity-services-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: identity-services
+    ports:
+      - '3302:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
