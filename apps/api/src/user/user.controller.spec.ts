@@ -1,13 +1,11 @@
 import { faker } from '@faker-js/faker/locale/en';
+import { CreateUserDto, User, UserDto } from '@identity-services/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Repository } from 'typeorm';
-import { UserModule } from '../user/user.module';
-import { UserController } from './user.controller';
-import { UserDto } from './dto/user.dto';
-import { CreateUserDto } from './dto/create-user.dto';
-import { InfrastructureModule } from '../infrastructure/infrastructure.module';
-import { User } from './entities/user.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { AppModule } from '../app.module';
+import { UserController } from './user.controller';
 
 describe('UserController', () => {
   let userIdsCreated: Set<string> = new Set<string>();
@@ -16,7 +14,7 @@ describe('UserController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [InfrastructureModule, UserModule],
+      imports: [AppModule],
     }).compile();
 
     userRepository = app.get<Repository<User>>(getRepositoryToken(User));

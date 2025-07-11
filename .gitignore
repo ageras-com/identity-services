@@ -6,3 +6,4 @@ node_modules
 
 # Turborepo
 .turbo
+dist

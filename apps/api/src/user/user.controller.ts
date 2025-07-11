@@ -1,7 +1,5 @@
+import { CreateUserDto, UserDto, UserService } from '@identity-services/common';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreateUserDto } from '../user/dto/create-user.dto';
-import { UserService } from './user.service';
-import { UserDto } from './dto/user.dto';
 
 @Controller('users')
 export class UserController {

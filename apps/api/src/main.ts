@@ -1,9 +1,12 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { configureSwagger } from './infrastructure/utils/swagger';
-import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
-import { TypedConfigService } from './infrastructure/config/typed-config.service';
+import {
+  configureSwagger,
+  TypedConfigService,
+} from '@identity-services/common';
 import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
+
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
