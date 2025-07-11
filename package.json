@@ -19,10 +19,14 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/api/test/jest-e2e.json",
-    "typeorm": "yarn build migrations && typeorm -d dist/migrations/datasource.js",
+    "build:migrations": "nest build migrations",
     "migration:create": "typeorm migration:create ./apps/migrations/src/$npm_config_name",
-    "migration:generate": "npm run typeorm -- migration:generate -d dist/migrations/datasource.js ./apps/migrations/src/$npm_config_name",
-    "migration:run": "npm run typeorm -- migration:run -d dist/migrations/datasource.js"
+    "migration:generate": "yarn typeorm -- migration:generate -d dist/migrations/datasource.js ./apps/migrations/src/$npm_config_name",
+    "migration:run": "yarn build:migrations && yarn typeorm -- migration:run -d ./dist/apps/migrations/apps/migrations/src/datasource.js",
+    "db:create": "docker-compose up -d",
+    "db:start": "yarn db:create && yarn migration:run",
+    "db:destroy": "docker stop identity-services-db && docker rm identity-services-db && docker volume rm identity-services_postgres_data",
+    "db:reset": "yarn db:destroy && yarn db:start"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
