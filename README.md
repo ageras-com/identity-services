@@ -4,7 +4,7 @@ Identity Services for IAM maintained by Core Services
 
 # Dependencies
 
-This will install yarn, turbo, and nestjs cli globally.
+This will install yarn, and nestjs cli globally.
 
 ```bash
 npm install -g yarn
